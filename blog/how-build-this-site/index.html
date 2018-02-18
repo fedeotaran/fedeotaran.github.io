@@ -9,10 +9,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="referrer" content="no-referrer">
 <meta name="author" content="Fede Otaran">
-<meta name="description" content=" # TODO ">
+<meta name="description" content="I think it is a good idea for the first post explain how i build this site. It was built using Hugo. Hugo is a very popular open-source static site generators.
+Install and quickstart with Hugo First of all you have to install Hugo in your system. For this work follow the instruction on the official Hugo&rsquo;s docs.
+In my case, I did not want to install directly into my system so I used Docker.">
 
 <meta property="og:title" content="How Build This Site" />
-<meta property="og:description" content=" # TODO " />
+<meta property="og:description" content="I think it is a good idea for the first post explain how i build this site. It was built using Hugo. Hugo is a very popular open-source static site generators.
+Install and quickstart with Hugo First of all you have to install Hugo in your system. For this work follow the instruction on the official Hugo&rsquo;s docs.
+In my case, I did not want to install directly into my system so I used Docker." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://fedeotaran.github.io/blog/how-build-this-site/" />
 
@@ -57,11 +61,11 @@
 
 
     
-    <link rel="stylesheet" href="https://fedeotaran.github.io/css/reset.css?t=2018-02-18%2001%3a21%3a13.408689354%20%2b0000%20UTC%20m%3d%2b0.028866269">
-    <link rel="stylesheet" href="https://fedeotaran.github.io/css/pygments.css?t=2018-02-18%2001%3a21%3a13.408689354%20%2b0000%20UTC%20m%3d%2b0.028866269">
-    <link rel="stylesheet" href="https://fedeotaran.github.io/css/main.css?t=2018-02-18%2001%3a21%3a13.408689354%20%2b0000%20UTC%20m%3d%2b0.028866269">
+    <link rel="stylesheet" href="https://fedeotaran.github.io/css/reset.css?t=2018-02-18%2005%3a27%3a55.707720342%20%2b0000%20UTC%20m%3d%2b0.028258098">
+    <link rel="stylesheet" href="https://fedeotaran.github.io/css/pygments.css?t=2018-02-18%2005%3a27%3a55.707720342%20%2b0000%20UTC%20m%3d%2b0.028258098">
+    <link rel="stylesheet" href="https://fedeotaran.github.io/css/main.css?t=2018-02-18%2005%3a27%3a55.707720342%20%2b0000%20UTC%20m%3d%2b0.028258098">
     
-        <link rel="stylesheet" href="https://fedeotaran.github.io/css/override.css?t=2018-02-18%2001%3a21%3a13.408689354%20%2b0000%20UTC%20m%3d%2b0.028866269">
+        <link rel="stylesheet" href="https://fedeotaran.github.io/css/override.css?t=2018-02-18%2005%3a27%3a55.707720342%20%2b0000%20UTC%20m%3d%2b0.028258098">
     
 
 
@@ -177,14 +181,91 @@
                     <div class="date" title='Sat Feb 17 2018 21:09:19 UTC'>Feb 17, 2018</div>
                     
                     
-		    <div class="reading-time"><div class="middot"></div>One minute read</div>
+		    <div class="reading-time"><div class="middot"></div>2 minutes read</div>
                     
                 </div>
             </div>
             <div class="markdown">
                 
 
-<h2 id="todo"># TODO</h2>
+<p>I think it is a good idea for the first post explain how i build this site.
+It was built using <a href="https://gohugo.io/">Hugo</a>. Hugo is a very popular
+open-source static site generators.</p>
+
+<h2 id="install-and-quickstart-with-hugo">Install and quickstart with Hugo</h2>
+
+<p>First of all you have to install Hugo in your system. For this work follow
+the instruction on the <a href="https://gohugo.io/documentation/">official Hugo&rsquo;s docs</a>.</p>
+
+<p>In my case, I did not want to install directly into my system so I used
+<a href="https://www.docker.com/what-docker">Docker</a>.
+<a href="https://hub.docker.com/r/jguyomard/hugo-builder/">This image</a> has everything
+you need to run <code>hugo</code> command.</p>
+
+<h3 id="create-new-static-site">Create new static site</h3>
+
+<pre><code class="language-bash">  docker run --rm -it -v $PWD:/src -u hugo \
+    jguyomard/hugo-builder hugo new site new_site
+</code></pre>
+
+<h3 id="create-repository-with-the-initial-files">Create repository with the initial files:</h3>
+
+<p>Create repository on Github for you website code source <a href="https://github.com/new">here</a>.</p>
+
+<p>Then create your local repository and add the remote:</p>
+
+<pre><code class="language-bash">  cd new_site
+  git init
+  git add .
+  git commit -m &quot;first commit&quot;
+  git remote add origin git@github.com:fedeotaran/&lt;repo_name&gt;.git
+  git push -u origin master
+</code></pre>
+
+<h3 id="download-and-install-hugo-theme">Download and install Hugo theme</h3>
+
+<p>The simplest way to start using Hugo is to use one of his themes.
+See all Hugo&rsquo;s themes availables <a href="https://themes.gohugo.io/">here</a>.</p>
+
+<p>Then clone the repository inside <code>themes</code> folder:</p>
+
+<pre><code class="language-bash">  git clone https://github.com/nishanths/cocoa-hugo-theme.git themes/cocoa
+</code></pre>
+
+<p>If you want customize any theme, fork the repository and add as submodule:</p>
+
+<pre><code class="language-bash">  git submodule add https://github.com/budparr/cocoa-hugo-theme.git \
+    themes/cocoa
+</code></pre>
+
+<p>Now setup your theme on the config files:</p>
+
+<pre><code class="language-bash">  echo 'theme = &quot;cocoa&quot;' &gt;&gt; config.toml
+</code></pre>
+
+<p>For full configuration example you can use the files inside <code>exampleSite</code> folder:</p>
+
+<pre><code class="language-bash">  cp exampleSite/* .
+</code></pre>
+
+<h3 id="serve-your-site-locally">Serve your site locally</h3>
+
+<pre><code class="language-bash">  docker run --rm -it -v $PWD:/src -p 1313:1313 -u hugo \
+    jguyomard/hugo-builder hugo server -w -t cocoa \
+    --bind=0.0.0.0 --verbose --baseUrl=http://&lt;your_id_address&gt;
+</code></pre>
+
+<blockquote>
+<p>It&rsquo;s very important that you complete the flag <code>--baseUrl=</code> with
+your ip to serve correctly</p>
+</blockquote>
+
+<p>Now visit <code>http://&lt;your_ip_address&gt;:1313/</code></p>
+
+<blockquote>
+<p>It&rsquo;s importat that the image profile exist on <code>img</code> folder with the correct
+name for the server up correctly</p>
+</blockquote>
 
                 <br>
 		<p class="back-to-posts"><a href="https://fedeotaran.github.io/blog/">Back to posts</a></p>
