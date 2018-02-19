@@ -17,7 +17,7 @@
       <pubDate>Sat, 17 Feb 2018 21:09:19 +0000</pubDate>
       
       <guid>https://fedeotaran.github.io/blog/how-build-this-site/</guid>
-      <description>I think it is a good idea for the first post explain how i build this site. It was built using Hugo. Hugo is a very popular open-source static site generators.
+      <description>I think it&amp;rsquo;s a good idea for the first post explain how i build this site. It was built using Hugo. Hugo is a very popular open-source static site generators.
 Install and quickstart with Hugo First of all you have to install Hugo in your system. For this work follow the instruction on the official Hugo&amp;rsquo;s docs.
 In my case, I did not want to install directly into my system so I used Docker.</description>
     </item>
