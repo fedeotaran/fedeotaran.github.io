@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Fede Otaran</title>
+    <link>https://fedeotaran.github.io/es/</link>
+    <description>Recent content on Fede Otaran</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    <lastBuildDate>Sat, 17 Feb 2018 21:09:19 +0000</lastBuildDate>
+    
+	<atom:link href="https://fedeotaran.github.io/es/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>¿Cómo construir este sitio?</title>
+      <link>https://fedeotaran.github.io/es/blog/c%C3%B3mo-construir-este-sitio/</link>
+      <pubDate>Sat, 17 Feb 2018 21:09:19 +0000</pubDate>
+      
+      <guid>https://fedeotaran.github.io/es/blog/c%C3%B3mo-construir-este-sitio/</guid>
+      <description>Creo que es una buena idea para el primer post explicar como construí éste sitio. Fué contruido utilizando Hugo. Hugo es un herramienta muy popular y open-soruce, para genrar sitios estáticos.
+Instalación y cómo comenzar con Hugo Primero que nada tienes que instalar Hugo en tu sistema. Para esto sigue las siguiente instrucciones en documentación oficial de Hugo
+En mi caso, yo no quería instalarlo directamente en mi sistema asi que utilicé Docker.</description>
+    </item>
+    
+  </channel>
+</rss>

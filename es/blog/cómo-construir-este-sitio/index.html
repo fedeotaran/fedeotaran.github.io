@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="chrome=1">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer">
+
+<meta name="description" content="Creo que es una buena idea para el primer post explicar como construí éste sitio. Fué contruido utilizando Hugo. Hugo es un herramienta muy popular y open-soruce, para genrar sitios estáticos.
+Instalación y cómo comenzar con Hugo Primero que nada tienes que instalar Hugo en tu sistema. Para esto sigue las siguiente instrucciones en documentación oficial de Hugo
+En mi caso, yo no quería instalarlo directamente en mi sistema asi que utilicé Docker.">
+
+<meta property="og:title" content="¿Cómo construir este sitio?" />
+<meta property="og:description" content="Creo que es una buena idea para el primer post explicar como construí éste sitio. Fué contruido utilizando Hugo. Hugo es un herramienta muy popular y open-soruce, para genrar sitios estáticos.
+Instalación y cómo comenzar con Hugo Primero que nada tienes que instalar Hugo en tu sistema. Para esto sigue las siguiente instrucciones en documentación oficial de Hugo
+En mi caso, yo no quería instalarlo directamente en mi sistema asi que utilicé Docker." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://fedeotaran.github.io/es/blog/c%C3%B3mo-construir-este-sitio/" />
+
+
+
+<meta property="article:published_time" content="2018-02-17T21:09:19&#43;00:00"/>
+
+<meta property="article:modified_time" content="2018-02-17T21:09:19&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+
+
+<title>
+
+
+     ¿Cómo construir este sitio? 
+
+</title>
+<link rel="canonical" href="https://fedeotaran.github.io/es/blog/c%C3%B3mo-construir-este-sitio/">
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Ubuntu+Mono:400,400i,700,700i|Raleway:500">
+
+
+
+    <link rel="stylesheet" href="https://fedeotaran.github.io/css/reset.css">
+    <link rel="stylesheet" href="https://fedeotaran.github.io/css/pygments.css">
+    <link rel="stylesheet" href="https://fedeotaran.github.io/css/main.css">
+    
+
+
+
+
+<link rel="shortcut icon"
+
+    href="https://fedeotaran.github.io/img/favicon.ico"
+
+>
+
+
+
+
+
+
+
+
+</head>
+
+
+<body lang="">
+
+<section class="header">
+    <div class="container">
+        <div class="content">
+            
+            <a href="https://fedeotaran.github.io/es/"><img class="avatar" src="https://gravatar.com/avatar/1589f567548c44d734c62976c1628e46?s=200" rcset="https://gravatar.com/avatar/1589f567548c44d734c62976c1628e46?s=100 2x, https://gravatar.com/avatar/1589f567548c44d734c62976c1628e46?s=150 3x, https://gravatar.com/avatar/1589f567548c44d734c62976c1628e46?s=200 4x"></a>
+            
+            <a href="https://fedeotaran.github.io/es/"><div class="name"></div></a>
+            
+              <h3 class="self-intro">Desarrollador de Software</h3>
+            
+            <nav>
+                <ul>
+                    
+                        <li class="nav-blog"><a href="https://fedeotaran.github.io/es/blog/"><span>Blog</span></a></li>
+                    
+                        <li class="nav-about"><a href="https://fedeotaran.github.io/es/about/"><span>Sobre mí</span></a></li>
+                    
+                </ul>
+            </nav>
+        </div>
+    </div>
+</section>
+
+<section class="icons">
+    <div class="container">
+        <div class="content">
+        
+
+        
+
+	
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+        </div>
+    </div>
+</section>
+
+
+<section class="main post non-narrow zero-top-spacing">
+    <div class="container">
+        <div class="content">
+            <div class="front-matter">
+                <div class="title-container">
+                    <div class="page-heading">
+
+    ¿Cómo construir este sitio?
+
+</div>
+
+                    <div class="initials"><a href="https://fedeotaran.github.io/"></a></div>
+                </div>
+                <div class="meta">
+                    
+                    <div class="date" title='Sat Feb 17 2018 21:09:19 UTC'>Feb 17, 2018</div>
+                    
+                    
+		    <div class="reading-time"><div class="middot"></div>2 minutos de lectura</div>
+                    
+                </div>
+            </div>
+            <div class="markdown">
+                
+
+<p>Creo que es una buena idea para el primer post explicar como construí éste sitio. Fué contruido utilizando <a href="https://gohugo.io/">Hugo</a>. Hugo es un herramienta muy popular y open-soruce, para genrar sitios estáticos.</p>
+
+<h2 id="instalación-y-cómo-comenzar-con-hugo">Instalación y cómo comenzar con Hugo</h2>
+
+<p>Primero que nada tienes que instalar Hugo en tu sistema. Para esto sigue las
+siguiente instrucciones en <a href="https://gohugo.io/documentation/">documentación oficial de Hugo</a></p>
+
+<p>En mi caso, yo no quería instalarlo directamente en mi sistema asi que utilicé
+<a href="https://www.docker.com/what-docker">Docker</a>.
+<a href="https://hub.docker.com/r/jguyomard/hugo-builder/">Ésta imagen</a> Tiene todo lo que necesitas
+para correr <code>hugo</code>.</p>
+
+<h3 id="crea-un-sitio-estático">Crea un sitio estático</h3>
+
+<pre><code class="language-bash">  docker run --rm -it -v $PWD:/src -u hugo \
+    jguyomard/hugo-builder hugo new site new_site
+</code></pre>
+
+<h3 id="crea-un-repositorio-con-los-archivos-iniciales">Crea un repositorio con los archivos iniciales</h3>
+
+<p>Crea un repositorio en Github para el código fuente de tu sitio web <a href="https://github.com/new">así</a>.</p>
+
+<p>Luego crea tu repositorio local y agrega el remoto:</p>
+
+<pre><code class="language-bash">  cd new_site
+  git init
+  git add .
+  git commit -m &quot;first commit&quot;
+  git remote add origin git@github.com:&lt;github_user&gt;/&lt;repo_name&gt;.git
+  git push -u origin master
+</code></pre>
+
+<h3 id="descarga-e-instala-un-theme-para-hugo">descarga e instala un theme para Hugo</h3>
+
+<p>La forma más simple para empezar a usar Hugo es usar unos de los themes que se
+encuentra publicados. Mira todos los temas disponibles <a href="https://themes.gohugo.io/">aquí</a>.</p>
+
+<p>Luego clona el repositorio dentro de la carpeta <code>themes</code>:</p>
+
+<pre><code class="language-bash">  git clone https://github.com/nishanths/cocoa-hugo-theme.git themes/cocoa
+</code></pre>
+
+<p>Si to quieres personalizar algú tema has un fork del repositorio y agregalo
+como submódulo de tu proyecto:</p>
+
+<pre><code class="language-bash">  git submodule add https://github.com/&lt;github_user&gt;/cocoa-hugo-theme.git \
+    themes/cocoa
+</code></pre>
+
+<p>Ahora configura tu theme en el archivo de configuración:</p>
+
+<pre><code class="language-bash">  echo 'theme = &quot;cocoa&quot;' &gt;&gt; config.toml
+</code></pre>
+
+<p>Para un ejemplo de configuracion completo puede ver el archivo dento de la carpeta <code>exampleSite</code>:</p>
+
+<pre><code class="language-bash">  cp exampleSite/* .
+</code></pre>
+
+<h3 id="levanta-un-servidor-local-de-tu-sitio">Levanta un servidor local de tu sitio</h3>
+
+<pre><code class="language-bash">  docker run --rm -it -v $PWD:/src -p 1313:1313 -u hugo \
+    jguyomard/hugo-builder hugo server -w -t cocoa \
+    --bind=0.0.0.0 --verbose --baseUrl=http://&lt;your_id_address&gt;
+</code></pre>
+
+<blockquote>
+<p>Es muy importante completar el flag <code>--baseUrl=</code> con la ip correcta del
+servidor</p>
+</blockquote>
+
+<p>Ahora visita <code>http://&lt;your_ip_address&gt;:1313/</code>
+&gt; Es importante que la imagen de perfil (avatar) exista en la carpeta <code>img</code>
+&gt; con el nombre correcto para que el server levante sin errores</p>
+
+<p>Finalmente, si quieres deployar tus sitio estático en Github Pages lee
+<a href="https://gohugo.io/hosting-and-deployment/hosting-on-github/">éste artículo</a>.</p>
+
+                <br>
+		<p class="back-to-posts"><a href="https://fedeotaran.github.io/blog/">Artículos anteriores</a></p>
+            </div>
+            <br>
+            <div class="disqus">
+                <div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "fedeotaran" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-123-45', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+
+</body>
+</html>
+

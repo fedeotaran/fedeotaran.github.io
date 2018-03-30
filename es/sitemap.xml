@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>https://fedeotaran.github.io/es/blog/c%C3%B3mo-construir-este-sitio/</loc>
+    <lastmod>2018-02-17T21:09:19+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://fedeotaran.github.io/blog/how-build-this-site/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="https://fedeotaran.github.io/es/blog/c%C3%B3mo-construir-este-sitio/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://fedeotaran.github.io/es/about/</loc>
+    <lastmod>2018-02-17T20:51:23+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://fedeotaran.github.io/about/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="https://fedeotaran.github.io/es/about/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://fedeotaran.github.io/es/blog/</loc>
+    <lastmod>2018-02-17T21:09:19+00:00</lastmod>
+    <priority>0</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://fedeotaran.github.io/blog/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="https://fedeotaran.github.io/es/blog/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://fedeotaran.github.io/es/categories/</loc>
+    <priority>0</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://fedeotaran.github.io/categories/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="https://fedeotaran.github.io/es/categories/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://fedeotaran.github.io/es/</loc>
+    <lastmod>2018-02-17T21:09:19+00:00</lastmod>
+    <priority>0</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://fedeotaran.github.io/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="https://fedeotaran.github.io/es/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://fedeotaran.github.io/es/tags/</loc>
+    <priority>0</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://fedeotaran.github.io/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="https://fedeotaran.github.io/es/tags/"
+                />
+  </url>
+  
+</urlset>
