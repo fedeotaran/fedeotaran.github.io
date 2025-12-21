@@ -1,0 +1,203 @@
+
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.classless.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css" id="highlight-theme">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/elixir.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/erlang.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&family=Source+Code+Pro:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+    body { font-family: 'Source Sans 3', Arial, sans-serif; }
+    code, pre { font-family: 'Source Code Pro', monospace; }
+    </style>
+    <script>
+      // Función para detectar el tema del sistema
+      function getSystemTheme() {
+        return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      }
+
+      // Función para cambiar el tema de highlight.js
+      function setHighlightTheme(theme) {
+        const link = document.getElementById('highlight-theme');
+        const lightTheme = 'github';
+        const darkTheme = 'github-dark';
+
+        if (theme === 'dark') {
+          link.href = `https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/${darkTheme}.min.css`;
+        } else {
+          link.href = `https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/${lightTheme}.min.css`;
+        }
+      }
+
+      // Configurar el tema inicial
+      setHighlightTheme(getSystemTheme());
+
+      // Escuchar cambios en el tema del sistema
+      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+        setHighlightTheme(e.matches ? 'dark' : 'light');
+      });
+
+      // Inicializar highlight.js
+      hljs.highlightAll();
+    </script>
+    <title>fedeotaran | Direnv Makes Env Easy</title>
+  </head>
+  <body>
+    <header>
+  <nav>
+    <ul>
+      <li>
+        <a href="/"><strong>fedeotaran</strong></a>
+      </li>
+    </ul>
+    <ul>
+      
+        <li><a href="/">👋 Hi!</a></li>
+      
+        <li><a href="/me">👨‍💻 Me</a></li>
+      
+      
+        <li><a href="/blog">📝 Blog</a></li>
+      
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <article>
+    <header>
+      <hgroup>
+        <h1>Direnv Makes Env Easy</h1>
+        <p>How to use direnv to automatically manage environment variables per project and keep your shell clean.</p>
+      </hgroup>
+      <p>
+        <small>
+          By Fede Otaran |
+          2023-02-14
+          
+            | Tags: direnv, environment variables, productivity, tools
+          
+        </small>
+      </p>
+    </header>
+
+    <section>
+      <p>
+Managing environment variables is a common task in development. Different projects need different tools, credentials, or configs, and manually exporting variables is error-prone.  <br>
+This is where <strong>direnv</strong> shines.</p>
+<h2>
+What is <code class="inline">direnv</code>?</h2>
+<p>
+<code class="inline">direnv</code> is a command-line tool that <strong>automatically loads and unloads environment variables based on your current directory</strong>.  <br>
+As you move between projects, your shell environment updates itself—no manual intervention needed.</p>
+<blockquote>
+  <p>
+<em>What environment should be active in this directory?</em>  </p>
+</blockquote>
+<h2>
+The Core Idea</h2>
+<p>
+When you enter a directory with a <code class="inline">.envrc</code> file, <code class="inline">direnv</code>:</p>
+<ol>
+  <li>
+Detects the file    </li>
+  <li>
+Asks for your permission (for security)    </li>
+  <li>
+Loads the environment variables defined in it    </li>
+</ol>
+<p>
+When you leave, those variables are automatically unloaded.</p>
+<p>
+This means:</p>
+<ul>
+  <li>
+No global pollution    </li>
+  <li>
+No forgotten <code class="inline">export</code> commands    </li>
+  <li>
+No manual cleanup    </li>
+</ul>
+<h2>
+How It Fits Into Your Shell</h2>
+<p>
+Once hooked into your shell (bash, zsh, fish, etc.), <code class="inline">direnv</code> works seamlessly.  <br>
+Your environment changes dynamically as you <code class="inline">cd</code> between folders.</p>
+<p>
+A typical <code class="inline">.envrc</code>:</p>
+<pre><code class="sh">export DATABASE_URL=postgres://localhost/my_app
+export NODE_ENV=development</code></pre>
+<p>
+After running:</p>
+<pre><code class="sh">direnv allow</code></pre>
+<p>
+those variables are available <strong>only</strong> while you are inside that directory (or its subdirectories).</p>
+<h2>
+Why <code class="inline">direnv</code> Is Useful</h2>
+<p>
+The main value of <code class="inline">direnv</code> is its <strong>automatic and contextual behavior</strong>:</p>
+<ul>
+  <li>
+<strong>Project isolation</strong>: Each project defines its own environment.    </li>
+  <li>
+<strong>Safety</strong>: Explicit approval is required before loading any <code class="inline">.envrc</code>.    </li>
+  <li>
+<strong>Consistency</strong>: Teams can share the same setup.    </li>
+  <li>
+<strong>Simplicity</strong>: No custom scripts or manual sourcing needed.    </li>
+</ul>
+<p>
+Just enter the project directory and start working.</p>
+<h2>
+What <code class="inline">direnv</code> Is (and Isn’t)</h2>
+<p>
+<code class="inline">direnv</code> is:</p>
+<ul>
+  <li>
+A lightweight environment loader    </li>
+  <li>
+Shell-agnostic    </li>
+  <li>
+Focused on developer ergonomics    </li>
+</ul>
+<p>
+<code class="inline">direnv</code> is not:</p>
+<ul>
+  <li>
+A secrets manager    </li>
+  <li>
+A full configuration management system    </li>
+  <li>
+A replacement for <code class="inline">.env</code> files in production    </li>
+</ul>
+<p>
+Its strength is doing <strong>one thing well</strong>: managing local environment variables automatically.</p>
+<p>
+If you want to give it a try, you can find installation instructions and download <code class="inline">direnv</code> from the <a href="https://direnv.net">official website</a>.</p>
+<h2>
+Conclusion</h2>
+<p>
+<code class="inline">direnv</code> makes your directory define your environment.  <br>
+It removes friction from daily development and keeps your shell clean, predictable, and secure.</p>
+<p>
+If you work with multiple projects, <code class="inline">direnv</code> quickly becomes one of those tools you forget is there—until you try working without it.</p>
+
+    </section>
+  </article>
+</main>
+
+<footer>
+  <p>
+    <small>
+      © 2025 - All rights reserved
+    </small>
+  </p>
+</footer>
+
+  </body>
+</html>
