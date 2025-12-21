@@ -1,0 +1,179 @@
+
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.classless.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css" id="highlight-theme">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/elixir.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/erlang.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&family=Source+Code+Pro:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+    body { font-family: 'Source Sans 3', Arial, sans-serif; }
+    code, pre { font-family: 'Source Code Pro', monospace; }
+    </style>
+    <script>
+      // Función para detectar el tema del sistema
+      function getSystemTheme() {
+        return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      }
+
+      // Función para cambiar el tema de highlight.js
+      function setHighlightTheme(theme) {
+        const link = document.getElementById('highlight-theme');
+        const lightTheme = 'github';
+        const darkTheme = 'github-dark';
+
+        if (theme === 'dark') {
+          link.href = `https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/${darkTheme}.min.css`;
+        } else {
+          link.href = `https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/${lightTheme}.min.css`;
+        }
+      }
+
+      // Configurar el tema inicial
+      setHighlightTheme(getSystemTheme());
+
+      // Escuchar cambios en el tema del sistema
+      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+        setHighlightTheme(e.matches ? 'dark' : 'light');
+      });
+
+      // Inicializar highlight.js
+      hljs.highlightAll();
+    </script>
+    <title>fedeotaran | 👨‍💻 Me</title>
+  </head>
+  <body>
+    <header>
+  <nav>
+    <ul>
+      <li>
+        <a href="/"><strong>fedeotaran</strong></a>
+      </li>
+    </ul>
+    <ul>
+      
+        <li><a href="/">👋 Hi!</a></li>
+      
+        <li><a href="/me">👨‍💻 Me</a></li>
+      
+      
+        <li><a href="/blog">📝 Blog</a></li>
+      
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <article>
+    <header>
+      <hgroup>
+        <h1>👨‍💻 Me</h1>
+      </hgroup>
+    </header>
+
+    <section>
+      <h2>
+🛠️ What I do</h2>
+<p>
+I’ve been working as a software engineer for over a decade, mostly building web systems and APIs that need to be reliable, scalable, and easy to evolve over time.</p>
+<p>
+My day-to-day work is mainly <strong>backend-focused</strong>, where I design and implement business logic, integrations, background jobs, and APIs. I care a lot about clarity, explicitness, and systems that behave well in production 🚀.</p>
+<p>
+Over the years, I’ve worked across different stacks and technologies, which helped me understand systems end to end — not just the code, but also how they’re deployed, monitored, and operated ⚙️.</p>
+<hr class="thin">
+<h2>
+⚗️☁️ Elixir, backend &amp; infrastructure</h2>
+<p>
+A few years ago, I developed a strong interest in <strong>functional programming</strong> and <strong>distributed systems</strong>, which naturally led me to <strong>Elixir</strong>.</p>
+<p>
+Today, Elixir and Phoenix are a big part of how I think about backend development: fault tolerance, concurrency, clear boundaries, and simple mental models 🧠.</p>
+<p>
+Alongside backend work, I’m very comfortable dealing with <strong>infrastructure and DevOps</strong>:</p>
+<ul>
+  <li>
+⚙️ deployments and CI/CD pipelines  </li>
+  <li>
+☁️ cloud services and managed infrastructure  </li>
+  <li>
+📊 queues, storage, monitoring, and observability   </li>
+</ul>
+<p>
+I enjoy being close to production and making sure systems are not only well-built, but also well-operated.</p>
+<hr class="thin">
+<h2>
+🎓 Teaching &amp; mentoring</h2>
+<p>
+Besides industry work, I’ve spent several years teaching <strong>software engineering and programming</strong> at university level.</p>
+<p>
+Teaching forced me to explain <em>why</em> things work the way they do, not just <em>how</em>. That experience heavily shaped how I write code, design systems, and collaborate with others.</p>
+<p>
+I enjoy mentoring, reviewing code, and helping teams make better technical decisions through calm discussions and shared understanding 🤝.</p>
+<hr class="thin">
+<h2>
+🤓 How I like to work</h2>
+<ul>
+  <li>
+Small to medium teams with high ownership    </li>
+  <li>
+Clear communication and pragmatic decisions 🗣️    </li>
+  <li>
+Simple solutions over clever ones ✂️    </li>
+  <li>
+Systems that are boring (and stable) in production 😌    </li>
+</ul>
+<p>
+I value teams where people understand the system as a whole and are comfortable moving across different layers when needed.</p>
+<hr class="thin">
+<h2>
+🧰 Tech I use</h2>
+<p>
+Some tools and technologies I’ve worked with in production:</p>
+<ul>
+  <li>
+🧑‍💻 <strong>Languages:</strong> Elixir, Ruby, Python, JavaScript    </li>
+  <li>
+🧱 <strong>Frameworks:</strong> Phoenix, Rails, Flask    </li>
+  <li>
+🗄️ <strong>Databases:</strong> PostgreSQL, MySQL, Redis    </li>
+  <li>
+☁️ <strong>Infra &amp; DevOps:</strong> AWS, Fly.io, Docker, CI/CD    </li>
+  <li>
+📬 <strong>Async &amp; messaging:</strong> SQS, SNS, RabbitMQ    </li>
+</ul>
+<p>
+(Not exhaustive, just the ones I feel at home with.)</p>
+<hr class="thin">
+<h2>
+🌍 Find me around</h2>
+<p>
+You can usually find me as <strong>@fedeotaran</strong> around the internet.</p>
+<ul>
+  <li>
+💼 <a href="https://www.linkedin.com/in/fedeotaran/">LinkedIn</a>  </li>
+  <li>
+🐦 <a href="https://x.com/fedeotaran">X / Twitter</a>  </li>
+  <li>
+🦋 <a href="https://bsky.app/profile/fedeotaran.bsky.social">Bluesky</a>  </li>
+  <li>
+✉️ Email: otaran.federico@gmail.com  </li>
+</ul>
+
+    </section>
+  </article>
+</main>
+
+<footer>
+  <p>
+    <small>
+      © 2025 - All rights reserved
+    </small>
+  </p>
+</footer>
+
+  </body>
+</html>

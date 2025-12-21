@@ -1,0 +1,113 @@
+
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.classless.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css" id="highlight-theme">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/elixir.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/erlang.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&family=Source+Code+Pro:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+    body { font-family: 'Source Sans 3', Arial, sans-serif; }
+    code, pre { font-family: 'Source Code Pro', monospace; }
+    </style>
+    <script>
+      // Función para detectar el tema del sistema
+      function getSystemTheme() {
+        return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      }
+
+      // Función para cambiar el tema de highlight.js
+      function setHighlightTheme(theme) {
+        const link = document.getElementById('highlight-theme');
+        const lightTheme = 'github';
+        const darkTheme = 'github-dark';
+
+        if (theme === 'dark') {
+          link.href = `https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/${darkTheme}.min.css`;
+        } else {
+          link.href = `https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/${lightTheme}.min.css`;
+        }
+      }
+
+      // Configurar el tema inicial
+      setHighlightTheme(getSystemTheme());
+
+      // Escuchar cambios en el tema del sistema
+      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+        setHighlightTheme(e.matches ? 'dark' : 'light');
+      });
+
+      // Inicializar highlight.js
+      hljs.highlightAll();
+    </script>
+    <title>fedeotaran | How I Build This Site</title>
+  </head>
+  <body>
+    <header>
+  <nav>
+    <ul>
+      <li>
+        <a href="/"><strong>fedeotaran</strong></a>
+      </li>
+    </ul>
+    <ul>
+      
+        <li><a href="/">👋 Hi!</a></li>
+      
+        <li><a href="/me">👨‍💻 Me</a></li>
+      
+      
+        <li><a href="/blog">📝 Blog</a></li>
+      
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <article>
+    <header>
+      <hgroup>
+        <h1>How I Build This Site</h1>
+        <p>A brief overview of the static site generator I built to create this website.</p>
+      </hgroup>
+      <p>
+        <small>
+          By Fede Otaran |
+          2022-08-01
+          
+            | Tags: sitex, elixir, static site generator
+          
+        </small>
+      </p>
+    </header>
+
+    <section>
+      <p>
+This site was built using Sitex, a lightweight and flexible static site generator. Sitex is a personal project I started back in 2022 as a way to learn Elixir and explore how far I could go using the language as the core of the tool.</p>
+<p>
+The main goal of Sitex is to be a very simple static site generator, focused on clarity and minimalism, and built primarily with Elixir. Content is written in Markdown, the configuration is intentionally small, and the build process is fast and predictable.</p>
+<p>
+If you’re curious, you can check out Sitex here:
+👉 <a href="https://github.com/fedeotaran/sitex">https://github.com/fedeotaran/sitex</a></p>
+<p>
+Simple ideas, simple tools, and Elixir at the center ⚡</p>
+
+    </section>
+  </article>
+</main>
+
+<footer>
+  <p>
+    <small>
+      © 2025 - All rights reserved
+    </small>
+  </p>
+</footer>
+
+  </body>
+</html>
