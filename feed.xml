@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>fedeotaran</title>
+    <link>https://fedeotaran.github.io</link>
+    <description>Personal blog and website</description>
+    <atom:link href="https://fedeotaran.github.io/feed.xml" rel="self" type="application/rss+xml" />
+    <language>es</language>
+    <item>
+      <title>Direnv Makes Env Easy</title>
+      <link>https://fedeotaran.github.io/blog/2023/02-14-direnv-makes-env-easy</link>
+      <description>How to use direnv to automatically manage environment variables per project and keep your shell clean.</description>
+      <pubDate>Tue, 14 Feb 2023 00:00:00 +0000</pubDate>
+      <guid>https://fedeotaran.github.io/blog/2023/02-14-direnv-makes-env-easy</guid>
+    </item>
+
+    <item>
+      <title>TIL: Cleaning Up Merged Git Branches</title>
+      <link>https://fedeotaran.github.io/blog/2023/01-05-cleaning-up-merged-git-branches</link>
+      <description>A quick command to safely clean up your local Git repository by deleting all branches that have already been merged, except for main.</description>
+      <pubDate>Thu, 05 Jan 2023 00:00:00 +0000</pubDate>
+      <guid>https://fedeotaran.github.io/blog/2023/01-05-cleaning-up-merged-git-branches</guid>
+    </item>
+
+    <item>
+      <title>How I Build This Site</title>
+      <link>https://fedeotaran.github.io/blog/2022/08-01-how-i-build-this-site</link>
+      <description>A brief overview of the static site generator I built to create this website.</description>
+      <pubDate>Mon, 01 Aug 2022 00:00:00 +0000</pubDate>
+      <guid>https://fedeotaran.github.io/blog/2022/08-01-how-i-build-this-site</guid>
+    </item>
+
+  </channel>
+</rss>
