@@ -10,11 +10,24 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/elixir.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/erlang.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&family=Source+Code+Pro:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="alternate" type="application/rss+xml" title="RSS Feed" href="/feed.xml">
     <style>
-    body { font-family: 'Source Sans 3', Arial, sans-serif; }
-    code, pre { font-family: 'Source Code Pro', monospace; }
+    :root {
+      --pico-font-family: 'Source Sans 3', system-ui, -apple-system, "Segoe UI", "Roboto", "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif;
+      --pico-font-family-monospace: 'JetBrains Mono', ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+      --pico-code-background-color: #f6f8fa;
+    }
+    [data-theme="dark"] {
+      --pico-code-background-color: #161b22;
+    }
+    pre {
+      border: 1px solid #e1e4e8;
+      border-radius: 6px;
+    }
+    [data-theme="dark"] pre {
+      border-color: #30363d;
+    }
     </style>
     <script>
       // Theme and highlight switcher (combined)
@@ -24,6 +37,7 @@
         const highlightLink = document.getElementById('highlight-theme');
         const sunSVG = `<svg width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5" fill="orange"/><g stroke="orange" stroke-width="2"><line x1="12" y1="1" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="6.34" y2="6.34"/><line x1="17.66" y1="17.66" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="6.34" y2="17.66"/><line x1="17.66" y1="6.34" x2="19.78" y2="4.22"/></g></svg>`;
         const moonSVG = `<svg width="24" height="24" viewBox="0 0 24 24"><ellipse cx="12" cy="12" rx="10" ry="10" fill="gray"/><ellipse cx="16" cy="10" rx="9" ry="10" fill="white" transform="rotate(-15 16 10)"/></svg>`;
+        const autoSVG = `<svg width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 2 A10 10 0 0 1 12 22 Z" fill="currentColor"/></svg>`;
         const lightTheme = 'github';
         const darkTheme = 'github-dark';
 
@@ -36,51 +50,66 @@
           }
         }
 
-        function setTheme(theme, persist = true) {
-          document.documentElement.setAttribute('data-theme', theme);
-          if (persist) localStorage.setItem('theme', theme);
-          setHighlightTheme(theme);
-          if (themeIcon) {
-            themeIcon.style.opacity = 0;
-            setTimeout(() => {
-              themeIcon.innerHTML = theme === 'dark' ? sunSVG : moonSVG;
-              themeIcon.style.transform = 'scale(1.2)';
-              themeIcon.style.opacity = 1;
-              setTimeout(() => {
-                themeIcon.style.transform = 'scale(1)';
-              }, 200);
-            }, 200);
-          }
-        }
-
         function getSystemTheme() {
           return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
         }
 
-        function initializeTheme() {
-          const savedTheme = localStorage.getItem('theme');
-          if (savedTheme === 'dark' || savedTheme === 'light') {
-            setTheme(savedTheme, false);
+        function setTheme(mode, persist = true) {
+          let actualTheme;
+          if (mode === 'auto') {
+            actualTheme = getSystemTheme();
+            if (persist) localStorage.setItem('themeMode', 'auto');
           } else {
-            setTheme(getSystemTheme(), false);
+            actualTheme = mode;
+            if (persist) localStorage.setItem('themeMode', mode);
+          }
+
+          document.documentElement.setAttribute('data-theme', actualTheme);
+          setHighlightTheme(actualTheme);
+
+          if (themeIcon) {
+            if (mode === 'auto') {
+              themeIcon.innerHTML = autoSVG;
+            } else if (actualTheme === 'dark') {
+              themeIcon.innerHTML = sunSVG;
+            } else {
+              themeIcon.innerHTML = moonSVG;
+            }
+          }
+        }
+
+        function initializeTheme() {
+          const savedMode = localStorage.getItem('themeMode');
+          if (savedMode === 'light' || savedMode === 'dark' || savedMode === 'auto') {
+            setTheme(savedMode, false);
+          } else {
+            setTheme('auto', false);
           }
         }
 
         if (themeToggle) {
           themeToggle.addEventListener('click', function () {
-            const currentTheme = document.documentElement.getAttribute('data-theme');
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            setTheme(newTheme, true);
+            const currentMode = localStorage.getItem('themeMode') || 'auto';
+            let newMode;
+            if (currentMode === 'light') {
+              newMode = 'dark';
+            } else if (currentMode === 'dark') {
+              newMode = 'auto';
+            } else {
+              newMode = 'light';
+            }
+            setTheme(newMode, true);
           });
         }
 
         // Inicialización: respeta preferencia previa o sistema
         initializeTheme();
 
-        // También responde a cambios del sistema si el usuario no ha elegido manualmente
+        // También responde a cambios del sistema si está en modo auto
         window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
-          if (!localStorage.getItem('theme')) {
-            setTheme(e.matches ? 'dark' : 'light', false);
+          const currentMode = localStorage.getItem('themeMode');
+          if (currentMode === 'auto' || !currentMode) {
+            setTheme('auto', false);
           }
         });
 
@@ -120,8 +149,7 @@
             --pico-box-shadow: none;
           "
         >
-          <span id="theme-icon" style="display:inline-block;transition:transform 0.3s, opacity 0.3s;">
-            <!-- Light SVG (sol) -->
+          <span id="theme-icon" style="display:inline-block;">
             <svg width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5" fill="orange"/><g stroke="orange" stroke-width="2"><line x1="12" y1="1" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="6.34" y2="6.34"/><line x1="17.66" y1="17.66" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="6.34" y2="17.66"/><line x1="17.66" y1="6.34" x2="19.78" y2="4.22"/></g></svg>
           </span>
         </button>
@@ -232,7 +260,8 @@ You can usually find me as <strong>@fedeotaran</strong> around the internet.</p>
 <footer>
   <p>
     <small>
-      © 2025 - All rights reserved
+      © 2025 |
+      <a href="/feed.xml">RSS</a> | <a href="mailto:otaran.federico@gmail.com">Email</a> | <a href="https://github.com/fedeotaran">GitHub</a> | <a href="https://x.com/fedeotaran">X</a> | <a href="https://www.linkedin.com/in/fedeotaran">LinkedIn</a> | <a href="https://bsky.app/profile/fedeotaran.bsky.social">Bluesky</a>
     </small>
   </p>
 </footer>
